@@ -174,7 +174,7 @@ class = "img" />
       exceptions: ['2025-12-25', '2025-01-01']
     }
   },
-
+ 
        
 ],
       loading: false,
@@ -413,11 +413,28 @@ const CreateAccountPage = {
         <!-- Pricing Info -->
         <div class="pricing-info">
           <h3>Pricing for Store Setup</h3>
+       
+       <h3>Standard Plan</h3>
+          <ul>
+            <li>Per Month: ₦3,000</li>
+            <li>Per Year: ₦30,000</li>
+           <li>Recommended: Pay for 6 months or a year to avoid freezing stores monthly.
+           </li>
+           <li>
+           Note: 100 products are the Maximum for this plan.
+           </li>
+          </ul>
+          
+          <h3>Advance Plan</h3>
           <ul>
             <li>Per Month: ₦6,000</li>
             <li>Per Year: ₦60,000</li>
-            <li>Recommended: Pay for 3 or 6 months to avoid freezing stores monthly.</li>
+            <li>Recommended: Pay for 6 months or a year to avoid freezing stores monthly.</li>
+        <li>
+           Note: 200 products are the Maximum for this plan.
+           </li>
           </ul>
+          
         </div>
 
         <!-- Target Audience -->
@@ -443,8 +460,8 @@ const CreateAccountPage = {
   `,
   data() {
     return {
-      whatsappNumber: '+2347043682582', // your WhatsApp number
-      callNumber: '+2348026450331', // your phone number
+      whatsappNumber: '+2348026450331', // your WhatsApp number
+      callNumber: '+2347043682582', // your phone number
       facebookUrl: 'https://www.facebook.com/profile.php?id=61553857205701', // your Facebook page
       };
   },
@@ -486,6 +503,7 @@ const CustomerCarePage = {
 
 
 /* Store Page */
+  
 const StorePage = {
 
        template: `
@@ -696,18 +714,10 @@ this.callNumber = savedStore.call || '';
 
 // Shuffle products when loading
 this.searchResults = Array.isArray(savedStore.products) ?
-  this.shuffleArray([...savedStore.products]).map(p => {
-    this.$set(
-      this.activeImage,
-      p.id,
-      this.getRandomImageIndex(p.images)
-    );
-    return p;
-  }) :
-  [];
+this.shuffleArray([...savedStore.products]) :
+[];
 }
 
-  
 else {
 // If no store selected, redirect back to AlphaPage
 this.showToast("Please select a store first.", "error", 3000);
@@ -722,11 +732,6 @@ document.body.style.overflow = newVal ? 'hidden' : 'auto';
 },
 
 methods: {
-  
-getRandomImageIndex(images) {
-  if (!images || !images.length) return 0;
-  return Math.floor(Math.random() * images.length);
-},
 showStatusModal(message) {
 this.statusModalMessage = message;
 this.statusModalVisible = true;
@@ -957,7 +962,7 @@ goBack() {
 
 
   
-/** Share page handler */  
+/** Share page handler */
 sharePage() {
   const platformName = "Shopverse";
   const brandName = this.store.name;
@@ -981,8 +986,6 @@ sharePage() {
       .catch(() => this.showToast("Failed to copy link", "error"));
   }
 },
-
-
 /** Focus on search bar */  
 focusSearch() {  
   this.$refs.searchInput && this.$refs.searchInput.focus();  
@@ -993,6 +996,7 @@ focusSearch() {
 
 
 };
+
 
 
 
